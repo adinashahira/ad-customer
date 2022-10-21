@@ -1,8 +1,6 @@
-[
-    {
-        "id": 1,
-        "name": "Adina",
-        "gender": "Female",
-        "dob": ""
-    }
-]
+{
+    "id": 1,
+    "name": "Adina",
+    "gender": "Female",
+    "dob": ""
+}
