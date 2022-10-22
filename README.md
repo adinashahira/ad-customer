@@ -1,27 +1,29 @@
-# AdCustomer
+# AD Customers Management System
+
+*This project is complete for Affin Hwang job application as front-end developer*
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Project Information
 
-## Code scaffolding
+- Covers the front-end part. Hosted on fake backend server ([JSON Server](https://www.npmjs.com/package/json-server))
+- Utilizes ([PrimeNg v12](https://www.primefaces.org/primeng-v12-lts))
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Prerequisites
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node v14.16.1
+- Angular v12
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Running the Project
 
-## Running end-to-end tests
+1. Clone the repository
+2. Run `npm run start` to run both the project and the JSON Server concurrently
+3. Changes in database (contents after CRUD operations) can be viewed live both on `localhost:3000/users` or in the `db.json` file found on the root level
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Contact me
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For futher information or conversation regarding the project, kindly contact me at <aadinashahira@gmail.com>
