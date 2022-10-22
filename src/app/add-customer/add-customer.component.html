@@ -1,0 +1,45 @@
+<div class="container">
+    <p-card>
+        <h1 class="p-text-center">{{ pageHeader }}</h1>
+        <form [formGroup]="newCustomerForm" (ngSubmit)="onSubmit(newCustomerForm.value)">
+            <div class="p-field p-col-12">
+                <h5>Name</h5>
+                <input type="text" formControlName="name" [ngClass]="{'ng-invalid ng-dirty': newCustomerForm.controls['name'].invalid}" class="capitalize" pInputText> 
+                <p *ngIf="newCustomerForm.controls['name'].invalid && newCustomerForm.controls['name'].touched" class="p-error text-xs">Name is required.</p>
+            </div>
+    
+            <div class="p-field p-col-12">
+                <h5>Date of Birth</h5>
+                <p-calendar [showIcon]="true" inputId="icon" dateFormat="dd/mm/yy" formControlName="dob" [ngClass]="{'ng-invalid ng-dirty': newCustomerForm.controls['dob'].invalid}"></p-calendar>
+                <p *ngIf="newCustomerForm.controls['dob'].invalid && newCustomerForm.controls['dob'].touched" class="p-error text-xs">Date of Birth is required.</p>
+            </div>
+    
+            <div class="p-field p-col-12">
+                <h5>Gender</h5>
+                <p-selectButton [options]="custGender" optionLabel="name" optionValue="code" formControlName="gender" [ngClass]="{'ng-invalid ng-dirty': newCustomerForm.controls['gender'].invalid}"></p-selectButton>
+                <p *ngIf="newCustomerForm.controls['gender'].invalid" class="p-error text-xs">Gender is required.</p>
+            </div>
+    
+            <div class="p-field p-col-12">
+                <h5>Photo</h5>
+                    <div>
+                        <input type="file" class="custom-file-input" (change)="fileChangeEvent($event)"/>
+                        <div>
+                            <ng-container *ngIf="isImageSaved || pageFunction === 'edit'">
+                                <img class="img-space p-mt-2" [src]="cardImageBase64 ? cardImageBase64 : customer.image" />
+                            </ng-container>
+                        </div>
+                    </div>
+            </div>
+    
+            <div class="p-field p-col-12 p-md-4 p-mt-2">
+                <button pButton type="submit" label="Submit" [disabled]="newCustomerForm.invalid"></button>
+            </div>
+        </form>
+    </p-card>
+</div>
+
+<p-dialog header="Success!" [(visible)]="dialogSuccess" [modal]="true">
+    <p>{{ dialogMessage }}</p>
+    <button pButton type="button" label="Close" (click)="backToHome()"></button>
+</p-dialog>

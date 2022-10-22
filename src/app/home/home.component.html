@@ -1,0 +1,70 @@
+<p-table #dt [value]="customers" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+    [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0">
+    <ng-template pTemplate="caption">
+        <div class="table-header">
+            <h1>List of Customers</h1>
+            <button pButton type="button" label="Add Customer" icon="pi pi-plus" iconPos="left" [routerLink]="['/add']" class="p-my-auto"></button>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th></th>
+            <th pSortableColumn="name">
+                <div class="p-jc-between p-ai-center">
+                    Name
+                    <p-sortIcon field="name"></p-sortIcon>
+                    <p-columnFilter type="text" field="name" display="menu" class="p-ml-auto"></p-columnFilter>
+                </div>
+            </th>
+            <th pSortableColumn="gender">
+                <div class="p-jc-between p-ai-center">
+                    Gender
+                    <p-sortIcon field="gender"></p-sortIcon>
+                    <p-columnFilter type="text" field="gender" display="menu" class="p-ml-auto"></p-columnFilter>
+                </div>
+            </th>
+            <th pSortableColumn="date">
+                <div class="p-jc-between p-ai-center">
+                    Date of Birth
+                    <p-sortIcon field="date"></p-sortIcon>
+                    <p-columnFilter type="date" field="date" display="menu" class="p-ml-auto"></p-columnFilter>
+                </div>
+            </th>
+            <th style="width: 8rem; padding-left: 2rem;">Update</th>
+            <th style="width: 8rem; padding-left: 2rem;">Delete</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer>
+        <tr class="p-selectable-row">
+            <td>
+                <span class="p-column-title">Image</span>
+                <img [src]="customer.image" width="150">
+            </td>
+            <td>
+                <span class="p-column-title">Name</span>
+                {{customer.name.charAt(0).toUpperCase() + customer.name.slice(1)}}
+            </td>
+            <td>
+                <span class="p-column-title">Gender</span>
+                {{customer.gender.charAt(0).toUpperCase() + customer.gender.slice(1)}}
+            </td>
+            <td>
+                <span class="p-column-title">Date</span>
+                {{customer.dob | date: 'dd/MM/yyyy'}}
+            </td>
+            <td style="text-align: center">
+                <button pButton type="button" class="p-button-primary" icon="pi pi-cog"[routerLink]="['/edit', customer.id]"></button>
+            </td>
+            <td style="text-align: center">
+                <button pButton type="button" class="p-button-danger" icon="pi pi-times" (click)="deleteCustomer(customer.id)"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="8">No customers found.</td>
+        </tr>
+    </ng-template>
+</p-table>
